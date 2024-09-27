@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Kredit Motor</string>
+    <string name="app_name" translatable="false">Kredit Motor</string>
+    <string name="home">Home</string>
+    <string name="transaction">Transaction</string>
+    <string name="about">About</string>
+    <string name="version">Version: %s</string>
+    <string name="developed_by">Developed By:</string>
 </resources>
