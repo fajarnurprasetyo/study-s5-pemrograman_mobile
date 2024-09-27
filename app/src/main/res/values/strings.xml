@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Kredit Motor</string>
+    <string name="home">Beranda</string>
+    <string name="transaction">Transaksi</string>
+    <string name="about">Tentang</string>
+    <string name="version">Versi: %s</string>
+    <string name="developed_by">Dikembangkan Oleh:</string>
+    <string name="employee_data">Data Petugas</string>
+    <string name="motorcycle_data">Data Motor</string>
+    <string name="creditors_data">Data Kreditor</string>
+    <string name="credit_application">Pengajuan Kredit</string>
+    <string name="installment_payment">Pembayaran Angsuran</string>
+    <string name="credit_application_data">Data Pengajuan Kredit</string>
+    <string name="installment_payment_data">Data Pembayaran Angsuran</string>
 </resources>
