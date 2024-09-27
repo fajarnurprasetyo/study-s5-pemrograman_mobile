@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -9,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Main"
+        android:theme="@style/Theme.App"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".activity.MainActivity"
@@ -21,24 +23,31 @@
         </activity>
         <activity
             android:name=".activity.EmployeeActivity"
-            android:exported="false" />
+            android:label="@string/employee_data"
+            android:exported="true" />
         <activity
             android:name=".activity.MotorcycleActivity"
-            android:exported="false" />
+            android:label="@string/motorcycle_data"
+            android:exported="true" />
         <activity
-            android:name=".activity.CreditorsActivity"
-            android:exported="false" />
+            android:name=".activity.CreditorActivity"
+            android:label="@string/creditors_data"
+            android:exported="true" />
         <activity
             android:name=".activity.CreditApplicationActivity"
-            android:exported="false" />
+            android:label="@string/credit_application"
+            android:exported="true" />
         <activity
             android:name=".activity.CreditApplicationDataActivity"
-            android:exported="false" />
+            android:label="@string/credit_application_data"
+            android:exported="true" />
         <activity
             android:name=".activity.InstallmentPaymentActivity"
-            android:exported="false" />
+            android:label="@string/installment_payment"
+            android:exported="true" />
         <activity
             android:name=".activity.InstallmentPaymentDataActivity"
-            android:exported="false" />
+            android:label="@string/installment_payment_data"
+            android:exported="true" />
     </application>
 </manifest>
