@@ -1,4 +1,4 @@
-package `in`.blackant.study_chapter_5.adapter.holder
+package `in`.blackant.study_chapter_5.view.holder
 
 import android.view.ViewGroup
 import `in`.blackant.study_chapter_5.model.table.DateCell

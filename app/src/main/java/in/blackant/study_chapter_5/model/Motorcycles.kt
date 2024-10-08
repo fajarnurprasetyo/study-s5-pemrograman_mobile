@@ -11,12 +11,12 @@ class Motorcycles : ArrayList<Motorcycles.Motorcycle>() {
 
     data class Motorcycle(
         val id: Int,
-        val code: Int,
+        val code: String,
         val name: String,
         val price: Double,
     ) {
         companion object {
-            val dummy = Motorcycle(0, 0, "", 0.0)
+            val dummy = Motorcycle(0, "", "", 0.0)
 
             fun get(api: Api, id: Int): Motorcycle? {
                 val params = mapOf(Pair("id", id.toString()))

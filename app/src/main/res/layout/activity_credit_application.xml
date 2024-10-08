@@ -59,7 +59,8 @@
                     android:id="@+id/down_payment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/down_payment" />
+                    android:hint="@string/down_payment"
+                    android:inputType="number|numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +73,8 @@
                     android:id="@+id/interest_per_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/interest_per_year" />
+                    android:hint="@string/interest_per_year"
+                    android:inputType="number|numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +87,8 @@
                     android:id="@+id/installment_period"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/installment_period" />
+                    android:hint="@string/installment_period"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout

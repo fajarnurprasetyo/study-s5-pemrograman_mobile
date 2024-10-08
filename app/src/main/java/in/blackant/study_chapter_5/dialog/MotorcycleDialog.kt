@@ -26,7 +26,7 @@ class MotorcycleDialog(private val activity: MotorcycleActivity) {
     private val data
         get() = Motorcycles.Motorcycle(
             id,
-            binding.code.text.toString().toInt(),
+            binding.code.text.toString(),
             binding.name.text.toString(),
             binding.price.text.toString().toDouble(),
         )
@@ -50,7 +50,7 @@ class MotorcycleDialog(private val activity: MotorcycleActivity) {
     fun edit(motorcycle: Motorcycles.Motorcycle) {
         id = motorcycle.id
         binding.layoutCode.isEnabled = false
-        binding.code.setText(motorcycle.code.toString())
+        binding.code.setText(motorcycle.code)
         binding.name.setText(motorcycle.name)
         binding.price.setText(motorcycle.price.toString())
 
