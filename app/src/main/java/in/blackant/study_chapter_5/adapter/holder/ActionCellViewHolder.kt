@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.evrencoskun.tableview.adapter.recyclerview.holder.AbstractViewHolder
+import com.google.android.material.button.MaterialButton
 import `in`.blackant.study_chapter_5.databinding.TableActionCellBinding
 import `in`.blackant.study_chapter_5.model.table.ActionCell
 
@@ -22,6 +23,9 @@ class ActionCellViewHolder(
 
         binding.primary.visibility = View.VISIBLE
         binding.primary.setOnClickListener(action.primary.listener)
+        if (action.primary.icon != null) {
+            (binding.primary as MaterialButton).setIconResource(action.primary.icon)
+        }
 
         if (action.secondary == null) {
             binding.secondary.visibility = View.GONE
@@ -30,5 +34,8 @@ class ActionCellViewHolder(
 
         binding.secondary.visibility = View.VISIBLE
         binding.secondary.setOnClickListener(action.secondary.listener)
+        if (action.secondary.icon != null) {
+            (binding.secondary as MaterialButton).setIconResource(action.secondary.icon)
+        }
     }
 }

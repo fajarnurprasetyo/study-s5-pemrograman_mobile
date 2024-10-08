@@ -40,8 +40,8 @@ class EmployeeActivity : AppCompatActivity(), EmployeeDialog.Listener {
         confirmDeleteDialog = ConfirmDeleteDialog(this)
         adapter = EmployeeTableAdapter()
 
-        binding.btnRefresh.setOnClickListener { _ -> loadData() }
-        binding.btnAdd.setOnClickListener { _ -> employeeDialog.add() }
+        binding.btnRefresh.setOnClickListener { loadData() }
+        binding.btnAdd.setOnClickListener { employeeDialog.add() }
         binding.table.setAdapter(adapter)
 
         setContentView(binding.root)
@@ -54,13 +54,16 @@ class EmployeeActivity : AppCompatActivity(), EmployeeDialog.Listener {
         loadData()
     }
 
-    private fun updateTable() {
-        val columnHeader = listOf(
+    private val columnHeader: List<ColumnHeader> by lazy {
+        listOf(
             ColumnHeader(getString(R.string.code)),
             ColumnHeader(getString(R.string.name)),
             ColumnHeader(getString(R.string.role)),
             ColumnHeader(getString(R.string.action)),
         )
+    }
+
+    private fun updateTable() {
         val rowHeaderItems = employees.map { employee ->
             RowHeader(employees.indexOf(employee) + 1)
         }
@@ -70,16 +73,14 @@ class EmployeeActivity : AppCompatActivity(), EmployeeDialog.Listener {
                 Cell(employee.name),
                 Cell(employee.role),
                 ActionCell(
-                    ActionCell.Action { _ -> employeeDialog.edit(employee) },
-                    ActionCell.Action { _ ->
+                    ActionCell.Action { employeeDialog.edit(employee) },
+                    ActionCell.Action {
                         confirmDeleteDialog.show(
                             getString(
                                 R.string.confirm_delete,
                                 employee.name
                             )
-                        ) {
-                            onDelete(employee)
-                        }
+                        ) { onDelete(employee) }
                     }
                 ),
             )

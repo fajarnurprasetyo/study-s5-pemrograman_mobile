@@ -7,12 +7,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import `in`.blackant.study_chapter_5.R
 import `in`.blackant.study_chapter_5.adapter.CreditorTableAdapter
-import `in`.blackant.study_chapter_5.adapter.MotorcycleTableAdapter
-import `in`.blackant.study_chapter_5.databinding.ActivityCreditorsBinding
 import `in`.blackant.study_chapter_5.databinding.ActivityDataTableBinding
 import `in`.blackant.study_chapter_5.dialog.ConfirmDeleteDialog
 import `in`.blackant.study_chapter_5.dialog.CreditorDialog
-import `in`.blackant.study_chapter_5.dialog.MotorcycleDialog
 import `in`.blackant.study_chapter_5.extension.doAsync
 import `in`.blackant.study_chapter_5.extension.hide
 import `in`.blackant.study_chapter_5.extension.show
@@ -22,7 +19,6 @@ import `in`.blackant.study_chapter_5.model.Creditors
 import `in`.blackant.study_chapter_5.model.table.ActionCell
 import `in`.blackant.study_chapter_5.model.table.Cell
 import `in`.blackant.study_chapter_5.model.table.ColumnHeader
-import `in`.blackant.study_chapter_5.model.table.CurrencyCell
 import `in`.blackant.study_chapter_5.model.table.RowHeader
 import kotlinx.coroutines.DelicateCoroutinesApi
 
@@ -43,8 +39,8 @@ class CreditorActivity : AppCompatActivity(), CreditorDialog.Listener {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding.btnRefresh.setOnClickListener { _ -> loadData() }
-        binding.btnAdd.setOnClickListener { _ -> motorcycleDialog.add() }
+        binding.btnRefresh.setOnClickListener { loadData() }
+        binding.btnAdd.setOnClickListener { motorcycleDialog.add() }
         binding.table.setAdapter(adapter)
 
         setContentView(binding.root)
@@ -57,14 +53,17 @@ class CreditorActivity : AppCompatActivity(), CreditorDialog.Listener {
         loadData()
     }
 
-    private fun updateTable() {
-        val columnHeader = listOf(
+    private val columnHeader: List<ColumnHeader> by lazy {
+        listOf(
             ColumnHeader(getString(R.string.name)),
             ColumnHeader(getString(R.string.job)),
             ColumnHeader(getString(R.string.phone)),
             ColumnHeader(getString(R.string.address)),
             ColumnHeader(getString(R.string.action)),
         )
+    }
+
+    private fun updateTable() {
         val rowHeaderItems = creditors.map { creditor ->
             RowHeader(creditors.indexOf(creditor) + 1)
         }
@@ -75,16 +74,14 @@ class CreditorActivity : AppCompatActivity(), CreditorDialog.Listener {
                 Cell(creditor.phone),
                 Cell(creditor.address),
                 ActionCell(
-                    ActionCell.Action { _ -> motorcycleDialog.edit(creditor) },
-                    ActionCell.Action { _ ->
+                    ActionCell.Action { motorcycleDialog.edit(creditor) },
+                    ActionCell.Action {
                         confirmDeleteDialog.show(
                             getString(
                                 R.string.confirm_delete,
                                 creditor.name
                             )
-                        ) {
-                            onDelete(creditor)
-                        }
+                        ) { onDelete(creditor) }
                     }
                 ),
             )

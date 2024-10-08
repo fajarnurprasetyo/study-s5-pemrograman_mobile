@@ -5,9 +5,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import `in`.blackant.study_chapter_5.R
 import `in`.blackant.study_chapter_5.activity.CreditorActivity
 import `in`.blackant.study_chapter_5.databinding.DialogCreditorBinding
-import `in`.blackant.study_chapter_5.databinding.DialogMotorcycleBinding
 import `in`.blackant.study_chapter_5.model.Creditors
-import `in`.blackant.study_chapter_5.model.Motorcycles
 
 class CreditorDialog(private val activity: CreditorActivity) {
     interface Listener {

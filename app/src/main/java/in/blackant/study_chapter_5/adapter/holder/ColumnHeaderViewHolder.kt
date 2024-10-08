@@ -2,7 +2,6 @@ package `in`.blackant.study_chapter_5.adapter.holder
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.evrencoskun.tableview.adapter.recyclerview.holder.AbstractViewHolder
 import `in`.blackant.study_chapter_5.databinding.TableColumnHeaderBinding
@@ -15,7 +14,7 @@ class ColumnHeaderViewHolder(
     ),
 ) : AbstractViewHolder(binding.root) {
     fun bind(column: ColumnHeader?) {
-        binding.text.text = column?.content as String?
+        binding.text.text = column?.content
         binding.root.layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
         binding.text.requestLayout()
     }

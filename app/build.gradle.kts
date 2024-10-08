@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "in.blackant.study_chapter_5"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 101
         versionName = "1.0.1"

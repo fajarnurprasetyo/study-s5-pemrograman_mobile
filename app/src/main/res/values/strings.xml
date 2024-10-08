@@ -43,4 +43,5 @@
     <string name="total_credit">Total Kredit</string>
     <string name="monthly_installments">Angsuran per Bulan</string>
     <string name="reset">Reset</string>
+    <string name="date">Tanggal</string>
 </resources>

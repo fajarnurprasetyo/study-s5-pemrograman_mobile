@@ -16,6 +16,8 @@ class Motorcycles : ArrayList<Motorcycles.Motorcycle>() {
         val price: Double,
     ) {
         companion object {
+            val dummy = Motorcycle(0, 0, "", 0.0)
+
             fun get(api: Api, id: Int): Motorcycle? {
                 val params = mapOf(Pair("id", id.toString()))
                 return api.get(ENDPOINT, Motorcycle::class.java, params)
