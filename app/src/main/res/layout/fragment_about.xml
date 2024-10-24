@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fajar Nur Prasetyo | 2211200007"
+        android:text="Fajar Nur Prasetyo | 1122100007"
         android:textAppearance="@style/TextAppearance.Material3.BodySmall"
         tools:ignore="HardcodedText" />
 

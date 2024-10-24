@@ -11,7 +11,7 @@ class Motorcycles : ArrayList<Motorcycles.Motorcycle>() {
 
     data class Motorcycle(
         val id: Int,
-        val code: Int,
+        val code: String,
         val name: String,
         val price: Double,
     ) {
