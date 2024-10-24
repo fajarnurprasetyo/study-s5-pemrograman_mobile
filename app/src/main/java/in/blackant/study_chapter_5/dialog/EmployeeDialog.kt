@@ -1,5 +1,6 @@
 package `in`.blackant.study_chapter_5.dialog
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import `in`.blackant.study_chapter_5.R
@@ -45,6 +46,7 @@ class EmployeeDialog(private val activity: EmployeeActivity) {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun edit(employee: Employees.Employee) {
         id = employee.id
         binding.layoutCode.isEnabled = false

@@ -46,7 +46,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/btn_installment_payment"
+            android:id="@+id/btn_credit_application_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="12dp"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/installment_payment"
+                android:text="@string/credit_application_data"
                 android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                 android:textColor="@color/design_default_color_on_primary" />
 
@@ -79,7 +79,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/btn_credit_application_data"
+            android:id="@+id/btn_installment_payment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="12dp"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/credit_application_data"
+                android:text="@string/installment_payment"
                 android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                 android:textColor="@color/design_default_color_on_primary" />
 

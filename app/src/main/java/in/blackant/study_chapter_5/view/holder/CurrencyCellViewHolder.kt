@@ -1,10 +1,9 @@
-package `in`.blackant.study_chapter_5.adapter.holder
+package `in`.blackant.study_chapter_5.view.holder
 
 import android.view.ViewGroup
 import `in`.blackant.study_chapter_5.model.table.CurrencyCell
 import java.text.NumberFormat
 import java.util.Currency
-import java.util.Locale
 
 class CurrencyCellViewHolder(parent: ViewGroup) : StringCellViewHolder(parent) {
     private val formatter = NumberFormat.getCurrencyInstance().apply {

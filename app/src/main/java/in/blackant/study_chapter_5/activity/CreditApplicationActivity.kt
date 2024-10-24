@@ -2,21 +2,21 @@ package `in`.blackant.study_chapter_5.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
 import `in`.blackant.study_chapter_5.databinding.ActivityCreditApplicationBinding
 import `in`.blackant.study_chapter_5.extension.doAsync
 import `in`.blackant.study_chapter_5.extension.hide
 import `in`.blackant.study_chapter_5.extension.show
 import `in`.blackant.study_chapter_5.extension.uiThread
 import `in`.blackant.study_chapter_5.model.Api
+import `in`.blackant.study_chapter_5.model.CreditApplications
 import `in`.blackant.study_chapter_5.model.Creditors
 import `in`.blackant.study_chapter_5.model.Motorcycles
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -40,7 +40,6 @@ class CreditApplicationActivity : AppCompatActivity() {
     private var totalCredit = 0.0
     private var monthlyInstallments = 0.0
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -70,15 +69,9 @@ class CreditApplicationActivity : AppCompatActivity() {
             updateData()
         }
 
-        binding.btnReset.setOnClickListener {
-            creditor = null
-            motorcycle = null
-            binding.creditor.setText(null, false)
-            binding.motorcycle.setText(null, false)
-            binding.downPayment.text = null
-            binding.interestPerYear.text = null
-            binding.installmentPeriod.text = null
-        }
+        binding.btnReset.setOnClickListener { resetData() }
+
+        binding.btnSave.setOnClickListener { saveData() }
 
         updateData()
         setContentView(binding.root)
@@ -93,6 +86,11 @@ class CreditApplicationActivity : AppCompatActivity() {
             insets
         }
 
+        loadData()
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun loadData() {
         doAsync {
             binding.loading.root.show()
             creditors = Creditors.get(api) ?: Creditors()
@@ -104,6 +102,16 @@ class CreditApplicationActivity : AppCompatActivity() {
                 binding.motorcycle.setAdapter(MotorcyclesAdapter(activity, motorcycles))
             }
         }
+    }
+
+    private fun resetData() {
+        creditor = null
+        motorcycle = null
+        binding.creditor.setText(null, false)
+        binding.motorcycle.setText(null, false)
+        binding.downPayment.text = null
+        binding.interestPerYear.text = null
+        binding.installmentPeriod.text = null
     }
 
     private val currencyFormatter = NumberFormat.getCurrencyInstance().apply {
@@ -131,6 +139,33 @@ class CreditApplicationActivity : AppCompatActivity() {
         binding.creditPrice.text = currencyFormatter.format(creditPrice)
         binding.totalCredit.text = currencyFormatter.format(totalCredit)
         binding.monthlyInstallments.text = currencyFormatter.format(monthlyInstallments)
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    private fun saveData() {
+        if (creditor == null || motorcycle == null) return
+        binding.loading.root.show()
+        doAsync {
+            val creditApplication = CreditApplications.CreditApplication(
+                0,
+                creditor!!.id,
+                motorcycle!!.id,
+                downPayment,
+                interestPerYear,
+                installmentPeriod
+            ).save(api)
+            uiThread {
+                binding.loading.root.hide()
+                if (creditApplication != null) {
+                    Toast.makeText(
+                        this@CreditApplicationActivity,
+                        "",
+                        Toast.LENGTH_LONG,
+                    ).show()
+                    resetData()
+                }
+            }
+        }
     }
 
     class CreditorsAdapter(context: Context, private val creditors: Creditors) :

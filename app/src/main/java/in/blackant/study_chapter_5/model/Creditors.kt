@@ -17,6 +17,8 @@ class Creditors : ArrayList<Creditors.Creditor>() {
         val address: String,
     ) {
         companion object {
+            val dummy = Creditor(0, "", "", "", "")
+
             fun get(api: Api, id: Int): Creditor? {
                 val params = mapOf(Pair("id", id.toString()))
                 return api.get(ENDPOINT, Creditor::class.java, params)

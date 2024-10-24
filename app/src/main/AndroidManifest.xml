@@ -24,23 +24,23 @@
         <activity
             android:name=".activity.EmployeeActivity"
             android:label="@string/employee_data"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activity.MotorcycleActivity"
             android:label="@string/motorcycle_data"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activity.CreditorActivity"
             android:label="@string/creditors_data"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activity.CreditApplicationActivity"
             android:label="@string/credit_application"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activity.CreditApplicationDataActivity"
             android:label="@string/credit_application_data"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".activity.InstallmentPaymentActivity"
             android:label="@string/installment_payment"

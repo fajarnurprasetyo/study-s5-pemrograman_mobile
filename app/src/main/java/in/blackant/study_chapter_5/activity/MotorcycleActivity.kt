@@ -41,8 +41,8 @@ class MotorcycleActivity : AppCompatActivity(), MotorcycleDialog.Listener {
         confirmDeleteDialog = ConfirmDeleteDialog(this)
         adapter = MotorcycleTableAdapter()
 
-        binding.btnRefresh.setOnClickListener { _ -> loadData() }
-        binding.btnAdd.setOnClickListener { _ -> motorcycleDialog.add() }
+        binding.btnRefresh.setOnClickListener { loadData() }
+        binding.btnAdd.setOnClickListener { motorcycleDialog.add() }
         binding.table.setAdapter(adapter)
 
         setContentView(binding.root)
@@ -71,16 +71,14 @@ class MotorcycleActivity : AppCompatActivity(), MotorcycleDialog.Listener {
                 Cell(motorcycle.name),
                 CurrencyCell(motorcycle.price, "IDR"),
                 ActionCell(
-                    ActionCell.Action { _ -> motorcycleDialog.edit(motorcycle) },
-                    ActionCell.Action { _ ->
+                    ActionCell.Action { motorcycleDialog.edit(motorcycle) },
+                    ActionCell.Action {
                         confirmDeleteDialog.show(
                             getString(
                                 R.string.confirm_delete,
                                 motorcycle.name
                             )
-                        ) {
-                            onDelete(motorcycle)
-                        }
+                        ) { onDelete(motorcycle) }
                     }
                 ),
             )

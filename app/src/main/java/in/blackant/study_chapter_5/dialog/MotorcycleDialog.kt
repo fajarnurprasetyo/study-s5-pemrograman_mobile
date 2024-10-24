@@ -1,5 +1,6 @@
 package `in`.blackant.study_chapter_5.dialog
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import `in`.blackant.study_chapter_5.R
@@ -39,12 +40,13 @@ class MotorcycleDialog(private val activity: MotorcycleActivity) {
 
         dialog.setTitle(R.string.add_motorcycle)
         dialog.show()
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener { _ ->
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             dialog.dismiss()
             activity.onAdd(data)
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun edit(motorcycle: Motorcycles.Motorcycle) {
         id = motorcycle.id
         binding.layoutCode.isEnabled = false
@@ -54,7 +56,7 @@ class MotorcycleDialog(private val activity: MotorcycleActivity) {
 
         dialog.setTitle(R.string.edit_motorcycle)
         dialog.show()
-        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener { _ ->
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
             dialog.dismiss()
             activity.onEdit(motorcycle, data)
         }

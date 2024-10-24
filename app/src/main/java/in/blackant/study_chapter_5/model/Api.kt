@@ -2,17 +2,14 @@ package `in`.blackant.study_chapter_5.model
 
 import android.content.Context
 import android.util.Log
-import com.android.volley.ClientError
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.NetworkResponse
 import com.android.volley.ParseError
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.RetryPolicy
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.RequestFuture
-import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
